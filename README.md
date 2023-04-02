@@ -62,8 +62,12 @@ root.mainloop()
 
 - **.get()**
 
-   Get current value of slider.
+   Get current values of slider.
+   
+- **.cget("attribute")**
 
+   Get any attribute value.
+   
 ### More Details
 This widget works just like the normal customtkinter slider widget, but it has dual slider-heads instead of one. A special thanks to [EN20M](https://github.com/EN20M) for providing the custom DrawEngine for rangeslider. 
 Follow me for more stuff like this: [`Akascape`](https://github.com/Akascape/)
