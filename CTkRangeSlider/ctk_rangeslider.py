@@ -425,7 +425,7 @@ class CTkRangeSlider(CTkBaseClass):
     For detailed information check out the documentation.
     """
 
-    def __init__(self, *args,
+    def __init__(self,
                  master: any,
                  width: Optional[int] = None,
                  height: Optional[int] = None,
