@@ -875,8 +875,8 @@ class CTkRangeSlider(CTkBaseClass):
             return self._hover
         elif attribute_name == "command":
             return self._command
-        elif attribute_name == "variable":
-            return self._variable
+        elif attribute_name == "variables":
+            return self._variables
         elif attribute_name == "orientation":
             return self._orientation
 
