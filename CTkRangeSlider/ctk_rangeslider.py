@@ -446,8 +446,8 @@ class CTkRangeSlider(CTkBaseClass):
                  state: str = "normal",
                  number_of_steps: Union[int, None] = None,
                  hover: bool = True,
-                 command: Union[Callable[[float], None], Tuple[Callable[[float], None], Callable[[float], None]],None] = None,
-                 variable: Union[tkinter.Variable, None] = None,
+                 command: Union[Callable[[float], None], Tuple[Callable[[float], None], Callable[[float], None]], None] = None,
+                 variables: Union[Tuple[tkinter.Variable, tkinter.Variable], None] = None,
                  orientation: str = "horizontal",
                  **kwargs):
 
@@ -503,9 +503,9 @@ class CTkRangeSlider(CTkBaseClass):
 
         # callback and control variables
         self._command = command
-        self._variables: tuple[tkinter.Variable] = variable
+        self._variables: tuple[tkinter.Variable] = variables
         self._variable_callback_blocked = False
-        self._variable_callback_name = None
+        self._variable_callback_name = [None, None]
         self._state = state
         
         self.grid_rowconfigure(0, weight=1)
@@ -523,10 +523,10 @@ class CTkRangeSlider(CTkBaseClass):
         self._draw()  # initial draw
 
         if self._variables is not None:
-            self._variable_callback_name[0] = self._variables[0].trace_add("write", self.variable_callback0)
-            self._variable_callback_name[1] = self._variables[1].trace_add("write", self.variable_callback1)
+            self._variable_callback_name[0] = self._variables[0].trace_add("write", self._variable_callback)
+            self._variable_callback_name[1] = self._variables[1].trace_add("write", self._variable_callback)
             self._variable_callback_blocked = True
-            self.set([self._variables[0].get(),self._variables[1].get()], from_variable_callback=True)
+            self.set([self._variables[0].get(), self._variables[1].get()], from_variable_callback=True)
             self._variable_callback_blocked = False
             
     def _create_bindings(self, sequence: Optional[str] = None):
@@ -823,16 +823,18 @@ class CTkRangeSlider(CTkBaseClass):
         if "command" in kwargs:
             self._command = kwargs.pop("command")
 
-        if "variable" in kwargs:
+        if "variables" in kwargs:
             if self._variables is not None:
-                self._variables[0].trace_remove("write", self._variable_callback_name)
-                self._variables[1].trace_remove("write", self._variable_callback_name)
+
+                self._variables[0].trace_remove("write", self._variable_callback_name[0])
+                self._variables[1].trace_remove("write", self._variable_callback_name[1])
 
             self._variables = kwargs["variables"]
 
             if self._variables is not None and self._variables != "":
-                self._variable_callback_name = self._variables[0].trace_add("write", self.variable_callback)
-                self.set([self._variables[0].get(),self._variables[1].get()], from_variable_callback=True)
+                self._variable_callback_name[0] = self._variables[0].trace_add("write", self._variable_callback)
+                self._variable_callback_name[1] = self._variables[1].trace_add("write", self._variable_callback)
+                self.set([self._variables[0].get(), self._variables[1].get()], from_variable_callback=True)
             else:
                 self._variables = None
 
