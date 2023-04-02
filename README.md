@@ -64,7 +64,7 @@ root.mainloop()
 
    Get current values of slider.
    
-- **.cget("attribute")**
+- **.cget("attribute_name")**
 
    Get any attribute value.
    
