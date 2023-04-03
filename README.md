@@ -44,7 +44,7 @@ root.mainloop()
 |button_hover_color |	hover color, tuple: (light_color, dark_color) or single color|
 |button_width | width of the buttons in px |
 |button_length | length of the buttons in px|
-|button_corner_radius | cornder roundness of the buttons |
+|button_corner_radius | corner roundness of the buttons |
 |orientation | "horizontal" (standard) or "vertical" |
 |state	| "normal" or "disabled" (not clickable) |
 |hover | bool, enable/disable hover effect, default is True |
