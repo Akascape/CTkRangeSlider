@@ -533,7 +533,7 @@ class CTkRangeSlider(CTkBaseClass):
         """ set necessary bindings for functionality of widget, will overwrite other bindings """
         if sequence is None or sequence == "<Enter>":
             self._canvas.bind("<Enter>", self._on_enter)
-        if sequence is None or sequnece == "<Motion>":
+        if sequence is None or sequence == "<Motion>":
             self._canvas.bind("<Motion>", self._on_enter)
         if sequence is None or sequence == "<Leave>":
             self._canvas.bind("<Leave>", self._on_leave)
