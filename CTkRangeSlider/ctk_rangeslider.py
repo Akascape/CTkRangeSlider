@@ -859,7 +859,7 @@ class CTkRangeSlider(CTkBaseClass):
         elif attribute_name == "progress_color":
             return self._progress_color
         elif attribute_name == "button_color":
-            return self._button_color
+            return self._button_color_0
         elif attribute_name == "button_hover_color":
             return self._button_hover_color
 
