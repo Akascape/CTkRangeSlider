@@ -839,7 +839,19 @@ class CTkRangeSlider(CTkBaseClass):
                 self._variables = None
 
             del kwargs["variables"]
+            
+        if "corner_radius" in kwargs:
+            self._corner_radius = kwargs.pop("corner_radius")
+            require_redraw = True
 
+        if "button_corner_radius" in kwargs:
+            self._button_corner_radius = kwargs.pop("button_corner_radius")
+            require_redraw = True
+
+        if "button_length" in kwargs:
+            self._button_length = kwargs.pop("button_length")
+            require_redraw = True
+            
         super().configure(require_redraw=require_redraw, **kwargs)
         
     def cget(self, attribute_name: str) -> any:
