@@ -2,7 +2,7 @@
 CTkRangeSlider
 Range slider for customtkinter
 Author: Akash Bora
-Version: 0.1
+Version: 0.2
 """
 
 import math
