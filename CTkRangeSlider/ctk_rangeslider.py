@@ -8,7 +8,7 @@ Version: 0.2
 import math
 import tkinter
 import sys
-from typing import Union, Tuple, Callable, Optional
+from typing import Union, Tuple, Callable, Optional, List
 
 from customtkinter.windows.widgets.core_rendering import DrawEngine
 from customtkinter.windows.widgets.theme import ThemeManager
@@ -740,7 +740,7 @@ class CTkRangeSlider(CTkBaseClass):
     def get(self) -> float:
         return self._output_values
 
-    def set(self, output_values: list[float], from_variable_callback=False):
+    def set(self, output_values: List[float], from_variable_callback=False):
 
         if self._from_ < self._to:
             output_values = [max(min(x, self._to), self._from_) for x in output_values]
